@@ -1,0 +1,137 @@
+ภาวะเส้นประสาทส่วนปลายผิดปกติจากเคมีบำบัด (CIPN)
+
+1. บทนำและความสำคัญ
+
+CIPN คือภาวะเส้นประสาทส่วนปลายผิดปกติที่เกิดจากยาเคมีบำบัดที่มีพิษต่อระบบประสาท (neurotoxic chemotherapy)
+พบใน ประมาณ 30–40% ของผู้ป่วยที่ได้รับยาเคมีบำบัดกลุ่มที่มีพิษต่อประสาท
+ความรุนแรงแตกต่างกันมากในแต่ละคน
+ส่วนใหญ่เป็นอาการทาง sensory (รับความรู้สึก) มากกว่าอาการทางมอเตอร์ และมักมีอาการปวดร่วมด้วย
+เป็นสาเหตุสำคัญของการลดขนาดยาหรือหยุดการรักษามะเร็ง (dose-limiting side effect)
+เมื่ออัตรารอดชีวิตจากมะเร็งดีขึ้น ปัญหา CIPN ระยะยาว (late effect) ในผู้รอดชีวิตจากมะเร็งจะยิ่งพบมากขึ้น
+
+2. แนวทางการวินิจฉัย CIPN ในผู้ป่วยมะเร็ง
+
+เมื่อพบผู้ป่วยมะเร็งที่มีอาการเส้นประสาทผิดปกติ ต้องพิจารณา 3 ประเด็นหลักเพื่อยืนยันว่าเป็น CIPN:
+
+ผู้ป่วยได้รับยาที่มีพิษต่อประสาทหรือไม่
+
+กลุ่มเสี่ยงสูง: taxanes, platinum compounds, vinca alkaloids, thalidomide, bortezomib
+กลุ่มเสี่ยงต่ำ (พบรายงานเป็นกรณีเดี่ยว): cyclophosphamide, methotrexate
+
+วิธีการให้ยา
+
+Methotrexate มักไม่ก่อพิษต่อประสาท ยกเว้นให้ทาง intrathecal
+Bortezomib ก่อพิษน้อยลงเมื่อให้แบบ subcutaneous แทน intravenous
+
+ขนาดยาสะสมและช่วงเวลาที่เกิดอาการ
+
+อาการมักเริ่มใน 2 เดือนแรก ของการรักษา และแย่ลงเรื่อยๆ ระหว่างให้เคมีบำบัด แล้วจะคงที่หลังหยุดยา
+มีข้อยกเว้น เช่น พิษเฉียบพลันของ paclitaxel และ oxaliplatin หรือ ปรากฏการณ์ "coasting" (อาการแย่ลงหลังหยุดยา cisplatin)
+หากอาการเริ่มเป็น สัปดาห์ถึงเดือน หลังหยุดยาไปแล้ว มักไม่ใช่ CIPN
+
+โรคอื่นที่ต้องแยกจาก CIPN
+
+โรคเส้นประสาทจากเมตาบอลิก/ต่อมไร้ท่อ (พบน้อยในผู้ป่วยมะเร็ง)
+ผู้ป่วยเบาหวานมีความเสี่ยงต่อ CIPN สูงขึ้น
+Paraneoplastic neuropathy (มักเกิดตอนเริ่มเป็นมะเร็ง แต่พบระหว่างรักษาได้ในกลุ่มมะเร็งต่อมน้ำเหลือง)
+การแทรกซึมของเซลล์มะเร็งเข้าเส้นประสาทโดยตรง (neurolymphomatosis, leukemia, carcinoma) — อาจเลียนแบบ CIDP
+Paraproteinemia และ amyloidosis (พบใน multiple myeloma, Waldenström's disease)
+ภาวะ graft-versus-host disease หลังปลูกถ่ายไขกระดูก อาจทำให้เกิด GBS หรือ CIDP
+
+เครื่องมือประเมิน CIPN
+
+Common Terminology Criteria for Adverse Events (CTCAE) — ใช้กันแพร่หลายแต่ ไม่ไวพอ
+EORTC QLQ-CIPN20 — แบบสอบถามคุณภาพชีวิต 20 ข้อ วัดอาการ sensory/motor/autonomic
+CIPN-R-ODS — วัดระดับความพิการโดยใช้ Rasch analysis
+Total Neuropathy Score clinical version (TNSc) — รวมการตรวจร่างกายและ neurophysiology
+
+ลักษณะทางพยาธิสรีรวิทยาโดยรวม
+
+ส่วนใหญ่เป็น dying-back axonal neuropathy (เส้นประสาทเสื่อมจากปลายเข้าหาต้น)
+ยากลุ่ม platinum ทำให้เกิด sensory neuronopathy (ทำลายตัวเซลล์ประสาทที่ dorsal root ganglion โดยตรง) ซึ่งต่างจากกลุ่มอื่น เนื่องจาก blood-nerve barrier ที่ dorsal root ganglion ซึมผ่านได้ง่ายกว่า
+
+3. รายละเอียดตามกลุ่มยา
+
+3.1 กลุ่ม Platinum compounds (Cisplatin, Carboplatin, Oxaliplatin)
+
+Cisplatin
+พิษหลัก: หูตึง/หูอื้อ (ototoxicity), sensory neuropathy, พิษต่อไต, กดไขกระดูก
+พิษต่อไตและไขกระดูกป้องกันได้ด้วยการให้น้ำเกลือ/ยากระตุ้นไขกระดูก แต่ พิษต่อหูและประสาทป้องกันไม่ได้ นอกจากลดขนาดยาหรือหยุดยา
+หูตึงระดับปานกลาง-รุนแรงพบ ~20%, หูอื้อพบ ~40% และมักเป็นถาวร
+เป็นยาที่ก่อพิษต่อประสาทมากที่สุดในกลุ่ม platinum
+
+
+Carboplatin — พิษต่อประสาทน้อยกว่า cisplatin
+
+Oxaliplatin
+นอกจากพิษเรื้อรังแบบเดียวกับ platinum ตัวอื่น ยังมี พิษเฉียบพลัน ที่เด่นคือ cold-induced dysesthesia (ปวดแสบเมื่อสัมผัสความเย็น) ที่มือ ใบหน้า และช่องปาก
+มักเริ่มตั้งแต่รอบที่ 2-3 ของการให้ยา และเป็นอยู่ 2-4 วันหลังให้ยา
+ความรุนแรงของอาการเฉียบพลันสัมพันธ์กับโอกาสเกิด fixed sensory neuropathy ในระยะยาว
+
+
+กลไก: สาร platinum จับกับ DNA ในนิวเคลียสและไมโทคอนเดรียของเซลล์ประสาทที่ dorsal root ganglion ทำให้เซลล์ตายแบบ apoptosis; ความเสียหายต่อไมโทคอนเดรีย (ซึ่งไม่มีระบบซ่อมแซม DNA แบบ nucleotide excision repair) เชื่อว่าเป็นกลไกของ "coasting"; อาการเฉียบพลันจาก oxaliplatin เชื่อว่าเกี่ยวกับผลต่อ voltage-gated sodium channel
+
+Coasting: ปรากฏการณ์ที่ CIPN จากยากลุ่ม platinum (โดยเฉพาะ cisplatin, oxaliplatin) แย่ลงต่อเนื่องหลายเดือน หลังหยุดยาแล้ว
+
+3.2 กลุ่มยาที่มีผลต่อ Microtubule
+
+Taxanes (Paclitaxel, Docetaxel, Cabazitaxel)
+
+ทำให้เกิด sensory neuropathy แบบ length-dependent ที่ขึ้นกับขนาดยาสะสม เจ็บปวด และเป็นแบบ dying-back axonopathy — อาจดีขึ้นบางส่วนหลังหยุดยา
+Cabazitaxel มีพิษสะสมน้อยกว่า แต่ทำให้รับรสผิดปกติ (dysgeusia)
+Paclitaxel ทำให้เกิด acute pain syndrome (ปวดกล้ามเนื้อ/ข้อ) ในผู้ป่วยกว่าครึ่ง ซึ่งอาจสัมพันธ์กับการเกิด CIPN ตามมา
+กลไก: รบกวนการขนส่งในแอกซอน (axonal transport) ผ่านการคงสภาพ microtubule, ทำลายไมโทคอนเดรีย, มีข้อมูลจากปลาซิบราฟิชชี้ว่าเกี่ยวข้องกับปฏิสัมพันธ์ระหว่างปลายประสาทผิวหนังกับเซลล์ผิวหนังผ่านเอนไซม์ MMP-13
+
+Vinca alkaloids (Vincristine, Vinblastine, Vinorelbine, Vindesine)
+
+ใช้หลักในมะเร็งเม็ดเลือด ทำให้เกิด sensorimotor neuropathy แบบ length-dependent
+อาจมีอาการหลงเหลือระยะยาวโดยเฉพาะในเด็กและผู้ใหญ่ตอนต้น, อาจพบ Raynaud syndrome, อาการทาง cranial nerve/autonomic พบได้แต่ไม่บ่อย
+กลไก: ทำลายเสถียรภาพของ microtubule (ตรงข้ามกับ taxanes) แต่ผลต่อ axonal transport คล้ายกัน; โปรตีน SARM1 มีบทบาทสำคัญในการเสื่อมของแอกซอนจาก vincristine — การลบยีน SARM1 ในหนูทดลองป้องกันการเกิดโรคได้
+
+ยากลุ่มใหม่ที่มีผลต่อ microtubule
+
+Eribulin, Ixabepilone — ใช้รักษามะเร็งเต้านม ทำให้เกิด axonal sensorimotor neuropathy กลไกคล้าย taxanes
+Brentuximab vedotin (แอนติบอดีต่อ CD30 จับกับสารพิษ monomethyl auristatin E) — ก่อ neuropathy แบบ off-target ใน 30–50% ของผู้ป่วย
+Ado-trastuzumab emtansine (แอนติบอดีต่อ HER2 จับกับ emtansine) — พบ neuropathy บ่อยเช่นกัน
+
+3.3 Proteasome inhibitors (Bortezomib, Carfilzomib, Ixazomib)
+
+Bortezomib ทำให้เกิด small fiber-predominant sensory neuropathy แบบเจ็บปวด และเป็น length-dependent — เป็น reversible distal axonopathy
+การให้แบบ subcutaneous ลดโอกาสและความรุนแรงของพิษต่อประสาทได้
+ผู้ป่วยส่วนน้อยอาจเกิด severe polyradiculoneuropathy ที่เชื่อว่าเกี่ยวข้องกับภูมิคุ้มกัน
+ยารุ่นใหม่ (carfilzomib, ixazomib) มีอุบัติการณ์ CIPN ต่ำกว่า
+กลไก: เพิ่มการรวมตัวของ microtubule, ลด axonal transport, ทำลายไมโทคอนเดรีย, มีการสะสมโปรตีน ubiquitinated ในนิวเคลียสของเซลล์ประสาทปมประสาทรับความรู้สึก
+
+3.4 Thalidomide และอนุพันธ์
+
+Thalidomide ทำให้เกิด sensory-predominant neuropathy เมื่อใช้ระยะยาว (ใช้รักษา multiple myeloma) — เป็นพิษที่รู้จักกันดีตั้งแต่ใช้เป็นยานอนหลับในทศวรรษ 1960
+อาการหลงเหลืออยู่ถึง 75% ในการติดตามระยะยาวของการศึกษายุคก่อน
+Lenalidomide, Pomalidomide (อนุพันธ์รุ่นใหม่) มีพิษต่อประสาทน้อยกว่า
+กลไก: เชื่อว่าเกี่ยวข้องกับฤทธิ์ anti-angiogenic (ยับยั้งการสร้างหลอดเลือด) ซึ่งอาจเป็นกลไกร่วมของ CIPN จากยาตัวอื่นด้วย
+
+3.5 Immune checkpoint inhibitors
+ไม่ได้เป็นพิษต่อประสาทโดยตรง แต่ทำให้เกิด neuropathy จากภูมิคุ้มกัน
+Ipilimumab, Tremelimumab — ยับยั้ง CTLA-4
+Pembrolizumab, Nivolumab — ยับยั้ง PD-1 receptor
+อาการทางระบบประสาทที่รายงานมักคล้ายกับ acute/chronic inflammatory demyelinating neuropathy (CIDP) หรือ vasculitic neuropathy บางรายรุนแรงถึงชีวิต แต่พบได้ไม่บ่อย (สูงสุดราว 3%)
+การรักษา: หยุดยา immunotherapy + ให้สเตียรอยด์ และ/หรือ IVIG
+
+4. ผลระยะยาวต่อระบบประสาท (Late effects)
+ผลระยะยาวหลักคือ อาการหลงเหลือของ CIPN ซึ่งมักกลายเป็นอาการปวดเรื้อรัง
+มีการศึกษาผลกระทบต่อ การรู้คิด (cognitive impairment) หลังเคมีบำบัด เรียกว่า "chemobrain" — เชื่อว่าเกี่ยวข้องกับผลต่อ neurogenesis ในสมองผู้ใหญ่ การฉายรังสีที่สมองอาจเสริมผลนี้ให้มากขึ้น (ยังมีงานวิจัยจำกัด)
+
+5. การรักษาและการป้องกัน CIPN
+ปัจจุบันยังไม่มีวิธีป้องกัน CIPN ที่ได้ผลชัดเจน
+ความท้าทาย: ยาที่ยับยั้งพิษต่อประสาทอาจลดประสิทธิภาพการฆ่าเซลล์มะเร็งไปด้วย
+แนวทางที่กำลังศึกษา:
+
+ปัจจัยเสี่ยงเฉพาะบุคคล เช่น เบาหวาน, อายุ, โรคเส้นประสาทเดิม, ชนิดมะเร็ง, พันธุกรรม — ผู้ป่วย Charcot-Marie-Tooth (CMT) โดยเฉพาะ CMT1A มีความเสี่ยงสูงขึ้นเมื่อได้ vinca alkaloids
+การศึกษาความสัมพันธ์ทางพันธุกรรม (genetic association studies) กับความไวต่อพิษของ paclitaxel, vincristine, platinum, bortezomib, thalidomide — พบความเสี่ยงเพิ่มขึ้นเล็กน้อย (hazard/odds ratio 1.08–5.75) แต่ผลมักไม่คงที่ระหว่างการศึกษา ปัจจุบัน ยังไม่มีการตรวจพันธุกรรมที่ใช้ทำนายความเสี่ยง CIPN ได้ในทางคลินิก
+การใช้ iPS cells จากเซลล์ผิวหนังผู้ป่วยเพื่อสร้างเซลล์ประสาท dorsal root ganglion จำลอง สำหรับศึกษาความไวต่อพิษแบบเฉพาะบุคคล ("disease in a dish")
+
+การรักษาตามอาการ
+
+National Cancer Institute สนับสนุนการศึกษาทางคลินิก 15 การศึกษา ทั้งด้านการป้องกัน (alpha lipoic acid, IV calcium/magnesium, vitamin E, acetyl-L-carnitine, glutathione) และการรักษาตามอาการ (nortriptyline, gabapentin, lamotrigine, amifostine, topical amitriptyline/ketamine, topical baclofen, duloxetine)
+มีเพียง duloxetine เท่านั้น ที่พิสูจน์แล้วว่าช่วยลดอาการปวดจาก CIPN ที่เกิดขึ้นแล้ว
+ยาอื่น (gabapentin, ยาทาเฉพาะที่) ใช้แบบ off-label
+เทคนิค electrostimulation (Scrambler therapy) มีผลเบื้องต้นดี แต่รอผลการศึกษาแบบสุ่มขนาดใหญ่ยืนยัน

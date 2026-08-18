@@ -1,0 +1,8 @@
+streamlit run ui_bot.py
+
+llama3.1
+llama3.2:3b
+qwen2.5:1.5b
+
+bge-m3
+nomic-embed-text
