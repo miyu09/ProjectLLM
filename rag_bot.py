@@ -58,67 +58,66 @@ def main():
 
     print(f"4. กำลังเชื่อมต่อกับ {MODEL_NAME}...")
 
+    def get_two_stage_context(vector_store, query, k_grading=2, k_advice=3):
+        all_docs = vector_store.similarity_search(query, k=25)
+        grading_docs = []
+        advice_docs = []
+        for doc in all_docs:
+            src = os.path.basename(doc.metadata.get("source", ""))
+            if "Grading.md" in src:
+                if len(grading_docs) < k_grading:
+                    grading_docs.append(doc)
+            else:
+                if len(advice_docs) < k_advice:
+                    advice_docs.append(doc)
+        return grading_docs, advice_docs
+
     # 🚀 เปิดโหมด Streaming ให้บอทพิมพ์ตอบทีละคำ
     llm = ChatOllama(
         model=MODEL_NAME,
         temperature=0.0,
-        num_ctx=8192,          # เพิ่มบริบทให้กว้างขึ้น เพื่อป้องกันปัญหาคำสั่งถูกตัดเมื่อดึงข้อมูลหลายชิ้น (k=5)
+        repeat_penalty=1.1,
+        top_p=0.8,
+        num_ctx=8192,
         callbacks=CallbackManager([StreamingStdOutCallbackHandler()])
     ) 
     
-    # โหลดเกณฑ์การประเมิน (Grading) เข้าสู่ System Prompt ถาวร
-    grading_criteria = ""
-    try:
-        with open("data/Grading.md", "r", encoding="utf-8") as f:
-            grading_criteria = f.read()
-    except Exception as e:
-        grading_criteria = "ไม่พบไฟล์ Grading.md"
-        
-    system_template = f"""คุณคือผู้ช่วย AI ที่มีหน้าที่ประเมินอาการและตอบคำถามจากข้อมูลอ้างอิงที่กำหนดให้เท่านั้น
-ข้อบังคับสำคัญที่สุด:
-1. คุณต้องตอบเป็น "ภาษาไทย" เท่านั้น (Strictly answer in Thai language). ห้ามมีตัวอักษรภาษาจีนเด็ดขาด (NO CHINESE).
-2. ให้ประเมิน Grade โดยอ้างอิงจาก "ข้อมูลอ้างอิง" ด้านล่างนี้เป็นหลัก
-3. สำหรับส่วน "คำแนะนำเบื้องต้นสำหรับคนไข้" อนุญาตให้ใช้ความรู้ทางการแพทย์ของคุณเองในการให้คำแนะนำที่ปลอดภัยและเหมาะสมได้
-4. บังคับรูปแบบการตอบให้ใช้ Format นีัเท่านั้น ห้ามมีเลขข้อย่อย:
+    system_template = """You are an expert oncology medical AI assistant for doctors and chemotherapy patients.
+Your sole responsibility is to evaluate symptom severity grades and provide safe, medical-grade patient advice strictly based on the provided reference context.
+
+CRITICAL MEDICAL SAFETY & GUARDRAIL RULES:
+1. STRICT THAI LANGUAGE ONLY (ห้ามมีภาษาจีนเด็ดขาด):
+   - You MUST answer ENTIRELY in natural, polite Thai language.
+   - Absolutely ZERO Chinese characters or Chinese vocabulary allowed under any circumstances.
+2. NO SELF-MEDICATION ADVICE (ห้ามแนะนำให้คนไข้ไปซื้อยาทานเองเด็ดขาด):
+   - NEVER suggest, recommend, or instruct patients to buy or take over-the-counter medicines on their own.
+   - ALWAYS advise the patient to consult their oncology doctor, attending physician, or healthcare team before taking any medicine or modifying treatment.
+3. NO BIZARRE OR UNREALISTIC ADVICE (ห้ามคิดค้นวิธีปฏิบัติที่ไม่สมจริง):
+   - Do NOT invent strange, absurd, or unscientific actions (such as using feet instead of hands, or unrealistic body movements).
+   - Provide ONLY standard, medically safe self-care advice found in the reference context (such as drinking warm water, resting, avoiding spicy/rough foods, observing symptoms, or contacting their hospital).
+4. ACCURATE CTCAE GRADING:
+   - Compare reported symptoms against the provided "เกณฑ์ประเมินเกรด (Grading Criteria)".
+   - Select ONLY ONE exact Grade (Grade 1, Grade 2, Grade 3, Grade 4, or Grade 5) that best matches the patient's condition, with a concise Thai explanation.
+
+REQUIRED RESPONSE FORMAT (ต้องตอบตามรูปแบบนี้เท่านั้น):
 
 ประเมินระดับความรุนแรง:
-(คุณต้อง "ประเมินและเลือก" Grade ที่ตรงกับอาการของผู้ป่วยมากที่สุด "เพียง 1 ระดับเท่านั้น". หากอาการไม่ตรงแบบเป๊ะๆ อนุโลมให้คุณประเมินเทียบเคียงเกรดที่ใกล้เคียงที่สุดได้. ห้ามคัดลอก Grade อื่นๆ มาแสดง พร้อมอธิบายเหตุผลสั้นๆ)
+Grade X (คำอธิบายสั้นๆ เกี่ยวกับอาการที่ตรงกับเกรด และเหตุผลที่ประเมินเป็นเกรดนี้)
 
 คำแนะนำเบื้องต้นสำหรับคนไข้:
-(ให้คำแนะนำสำหรับคนไข้)
-4. หากพบอาการอันตรายในข้อมูลให้เน้นย้ำผู้ใช้ด้วย
+(คำแนะนำการดูแลตัวเองที่ปลอดภัยตามข้อมูลอ้างอิง อธิบายสาเหตุเบื้องต้น และเน้นย้ำให้ขอคำแนะนำจากแพทย์ประจำตัวเสมอ ห้ามแนะนำให้ไปซื้อยาทานเองเด็ดขาด)
 
-=== GRADING CRITERIA ===
-{grading_criteria}
-======================="""
+STRICT LANGUAGE REMINDER: Respond ONLY in Thai. NO Chinese characters."""
     
-    human_template = """ข้อมูลอ้างอิง:
+    human_template = """Reference Context:
 {context}
 
-คำถาม: {question}"""
+Patient Query: {question}"""
 
     PROMPT = ChatPromptTemplate.from_messages([
         SystemMessagePromptTemplate.from_template(system_template),
         HumanMessagePromptTemplate.from_template(human_template)
     ])
-    
-    # สร้างรูปแบบการใส่ข้อมูลอ้างอิงให้ AI เห็นไฟล์ต้นทาง
-    document_prompt = PromptTemplate(
-        input_variables=["page_content", "source"],
-        template="[ไฟล์: {source}]\n{page_content}"
-    )
-
-    # สร้างระบบถาม-ตอบ พร้อมฝัง Prompt ที่เราตั้งไว้
-    qa_chain = RetrievalQA.from_chain_type(
-        llm=llm,
-        chain_type="stuff",
-        retriever=vector_store.as_retriever(search_kwargs={"k": 3}), 
-        return_source_documents=True,
-        chain_type_kwargs={
-            "prompt": PROMPT,
-            "document_prompt": document_prompt
-        } # 🔒 บังคับใช้ Prompt
-    )
 
     print("\n✅ ระบบพร้อมใช้งาน! (พิมพ์ 'exit' เพื่อออก)")
     print("-" * 30)
@@ -134,19 +133,34 @@ def main():
 
         print("🤖 AI ตอบ: ", end="", flush=True)
         try:
-            # ส่งคำถามไปให้ระบบ RAG พร้อมจับเวลา
             import time
             start_time = time.time()
-            response = qa_chain.invoke({"query": query})
+            
+            grading_docs, advice_docs = get_two_stage_context(vector_store, query, k_grading=2, k_advice=3)
+            all_sources = grading_docs + advice_docs
+            
+            context_text = ""
+            if grading_docs:
+                context_text += "=== [ส่วนที่ 1: เกณฑ์ประเมินเกรด (จากไฟล์ Grading.md)] ===\n"
+                for doc in grading_docs:
+                    context_text += f"[ไฟล์: {os.path.basename(doc.metadata.get('source',''))}]\n{doc.page_content}\n\n"
+                    
+            if advice_docs:
+                context_text += "=== [ส่วนที่ 2: เนื้อหาคำแนะนำและข้อมูลอ้างอิง (จากไฟล์คำแนะนำ)] ===\n"
+                for doc in advice_docs:
+                    context_text += f"[ไฟล์: {os.path.basename(doc.metadata.get('source',''))}]\n{doc.page_content}\n\n"
+
+            messages = PROMPT.format_messages(context=context_text, question=query)
+            response = llm.invoke(messages)
             elapsed_time = time.time() - start_time
-            print("\n") # เว้นบรรทัดเมื่อตอบจบประโยค
+            print("\n")
             print(f"⏱️ เวลาการทำ RAG: {elapsed_time:.2f} วินาที")
             
-            # --- ส่วนสำหรับแอบดูสมอง AI (แสดง Chunk ที่ถูกดึงมา) ---
-            print(f"\n[🔍 ข้อมูลอ้างอิงที่ AI ดึงมาอ่าน ({len(response['source_documents'])} ชิ้น)]")
-            for i, doc in enumerate(response['source_documents']):
+            print(f"\n[🔍 ข้อมูลอ้างอิงที่ AI ดึงมาอ่าน ({len(all_sources)} ชิ้น: Grading {len(grading_docs)} ชิ้น + คำแนะนำ {len(advice_docs)} ชิ้น)]")
+            for i, doc in enumerate(all_sources):
                 source_file = doc.metadata.get('source', 'ไม่ทราบไฟล์')
-                print(f"--- ชิ้นที่ {i+1} (จากไฟล์: {os.path.basename(source_file)}) ---")
+                doc_type = "Grading" if "Grading.md" in source_file else "คำแนะนำ"
+                print(f"--- ชิ้นที่ {i+1} [{doc_type}] (จากไฟล์: {os.path.basename(source_file)}) ---")
                 print(doc.page_content)
                 print("-" * 15)
                 
@@ -154,4 +168,4 @@ def main():
             print(f"\nเกิดข้อผิดพลาด: {e}")
 
 if __name__ == "__main__":
-    main()
+    main()
