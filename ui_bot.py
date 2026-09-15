@@ -17,12 +17,13 @@ from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, SystemMes
 # ==========================================
 # ตั้งค่าระบบ (Config)
 # ==========================================
+VERSION = "1.1"
 MODEL_NAME = "qwen2.5:3b"        # ใช้ Qwen 3B (ความจุระดับกลาง ฉลาดและเร็วพอดีกับ VRAM 4GB)
 EMBED_MODEL = "bge-m3"           # โมเดลสมองส่วนจำ (ตัวแปลงภาษา)
 
 # Page Config
 st.set_page_config(
-    page_title="Medical Assessment RAG Bot",
+    page_title=f"Medical Assessment RAG Bot v{VERSION}",
     page_icon="🏥",
     layout="wide"
 )
@@ -118,12 +119,12 @@ def get_two_stage_context(vector_store, query, k_grading=2, k_advice=3):
     return grading_docs, advice_docs
 
 # --- Header ---
-st.markdown('<div class="main-header">🏥 Medical Assessment RAG Bot</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="main-header">🏥 Medical Assessment RAG Bot <span style="font-size: 1.2rem; color: #64748B;">v{VERSION}</span></div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-header">ระบบประเมินอาการและตอบคำถามทางการแพทย์ด้วย RAG (ประเมินเกรด + คำแนะนำที่ปลอดภัย)</div>', unsafe_allow_html=True)
 
 # --- Sidebar ---
 with st.sidebar:
-    st.header("⚙️ ตั้งค่า RAG & ระบบ")
+    st.header(f"⚙️ ตั้งค่า RAG & ระบบ (v{VERSION})")
     st.write(f"🤖 **LLM Model:** `{MODEL_NAME}`")
     st.write(f"🧠 **Embedding Model:** `{EMBED_MODEL}`")
     

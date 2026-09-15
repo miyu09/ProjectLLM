@@ -18,12 +18,12 @@ from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, SystemMes
 # ==========================================
 # ตั้งค่าระบบ (Config)
 # ==========================================
-
+VERSION = "1.1"
 MODEL_NAME = "qwen2.5:3b"        # ใช้ Qwen 3B (ความจุระดับกลาง ฉลาดและเร็วพอดีกับ VRAM 4GB)
 EMBED_MODEL = "bge-m3"           # โมเดลสมองส่วนจำ (ตัวแปลงภาษา)
 
 def main():
-    print(f"--- กำลังเริ่มระบบ RAG บอท ---")
+    print(f"--- กำลังเริ่มระบบ RAG บอท (v{VERSION}) ---")
     
     import glob
 
