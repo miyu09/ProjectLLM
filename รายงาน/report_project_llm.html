@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face {
+    font-family: 'Sarabun';
+    src: url('./fonts/Sarabun-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Sarabun';
+    src: url('./fonts/Sarabun-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Sarabun';
+    src: url('./fonts/Sarabun-Italic.ttf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@page {
+    size: A4;
+    margin: 2.5cm 2.2cm 2.5cm 2.8cm;
+    @bottom-right {
+        content: counter(page);
+        font-family: 'Sarabun', sans-serif;
+        font-size: 10pt;
+    }
+    @top-right {
+        content: "Medical Assessment RAG Bot Report (Chapters 1-2)";
+        font-family: 'Sarabun', sans-serif;
+        font-size: 9pt;
+        color: #64748B;
+    }
+}
+
+body {
+    font-family: 'Sarabun', sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #1E293B;
+}
+
+h1 {
+    font-size: 18pt;
+    color: #0F172A;
+    border-bottom: 2px solid #2563EB;
+    padding-bottom: 6px;
+    margin-top: 24pt;
+    margin-bottom: 12pt;
+    page-break-before: always;
+}
+
+h1:first-of-type {
+    page-break-before: avoid;
+    text-align: center;
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 14pt;
+    color: #1E3A8A;
+    margin-top: 18pt;
+    margin-bottom: 8pt;
+}
+
+h3 {
+    font-size: 12pt;
+    color: #1E40AF;
+    margin-top: 14pt;
+    margin-bottom: 6pt;
+}
+
+h4 {
+    font-size: 11pt;
+    color: #334155;
+    margin-top: 10pt;
+    margin-bottom: 4pt;
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 8pt;
+}
+
+ul, ol {
+    margin-top: 4pt;
+    margin-bottom: 10pt;
+    padding-left: 20pt;
+}
+
+li {
+    margin-bottom: 4pt;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12pt;
+    margin-bottom: 16pt;
+    font-size: 10pt;
+    page-break-inside: avoid;
+}
+
+th, td {
+    border: 1px solid #CBD5E1;
+    padding: 7pt 9pt;
+    text-align: left;
+}
+
+th {
+    background-color: #F1F5F9;
+    color: #0F172A;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #F8FAFC;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #F1F5F9;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 9.5pt;
+    color: #C026D3;
+}
+
+pre {
+    background-color: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-left: 4px solid #2563EB;
+    padding: 10pt;
+    border-radius: 4px;
+    font-size: 9pt;
+    line-height: 1.4;
+    overflow-x: auto;
+    page-break-inside: avoid;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #E2E8F0;
+    margin: 20pt 0;
+}
+</style>
+</head>
+<body>
+<h1>การพัฒนาระบบสถาปัตยกรรมหลังบ้านแชทบอทประเมินระดับความรุนแรงของผลข้างเคียงสำหรับผู้ป่วยเคมีบำบัดด้วยเทคโนโลยี Retrieval-Augmented Generation</h1>
+<h3>A DEVELOPMENT OF BACKEND RETRIEVAL-AUGMENTED GENERATION (RAG) ARCHITECTURE FOR CHEMOTHERAPY SYMPTOM EVALUATION AND INTEGRATION WITH NARESUAN UNIVERSITY HOSPITAL CHATBOT SYSTEM</h3>
+<hr />
+<h2>บทคัดย่อ (Abstract - Thai)</h2>
+<p>โครงงานนี้นำเสนอการวิจัยและพัฒนาสถาปัตยกรรมระบบหลังบ้านอัจฉริยะ (Backend Intelligent Architecture) โดยใช้เทคโนโลยี Retrieval-Augmented Generation (RAG) สำหรับตอบคำถามและประเมินระดับความรุนแรงของผลข้างเคียงจากยาเคมีบำบัด เพื่อเตรียมเชื่อมต่อเข้ากับระบบแชทบอทเดิมของโรงพยาบาลมหาวิทยาลัยนเรศวร โดยมุ่งเน้นการคัดกรองภาวะแทรกซ้อน 3 กลุ่มอาการหลักที่พบบ่อยในผู้ป่วยโรคมะเร็ง ได้แก่ แผลในช่องปาก (Oral Mucositis), ท้องผูก (Chemotherapy-Induced Constipation), และปลายประสาทอักเสบหรือชาปลายมือปลายเท้า (Peripheral Neuropathy) ระบบหลังบ้านได้รับการออกแบบให้เชื่อมโยงฐานข้อมูลเวกเตอร์แบบฝังตัว (Embedded Vector Store) และโมเดลแปลงเวกเตอร์หลายภาษา (Multilingual Dense Embedding) เข้ากับคลังความรู้ทางการแพทย์และเกณฑ์มาตรฐานสากล Common Terminology Criteria for Adverse Events (CTCAE v5.0)</p>
+<p>ในขั้นตอนการวิจัยและพัฒนา ได้มีการสร้างส่วนต่อประสานโปรแกรมประยุกต์ต้นแบบด้วย Streamlit ขึ้นเพื่อใช้เป็นเครื่องมือทดสอบสมรรถนะภายใน (Testing &amp; Evaluation Prototype) โดยดำเนินการทดสอบเปรียบเทียบระหว่างโมเดลภาษาขนาดเล็ก (Small Language Models: SLM) ทั้งหมด 5 โมเดล บนชุดคำถามเคสจำลองทางการแพทย์โมเดลละ 30 คำถาม เพื่อวัดความถูกต้องในการจัดระดับความรุนแรงของอาการ ความแม่นยำในการค้นคืนบริบททางการแพทย์ และความเร็วในการตอบสนอง (Latency) นอกจากนี้ ระบบหลังบ้านได้ถูกวางโครงสร้างแบบแยกส่วน (Decoupled Headless Backend) พร้อมกลไกควบคุมความปลอดภัยทางการแพทย์ (Medical Guardrails) และ Application Programming Interface (API) เพื่อเตรียมความพร้อมสำหรับการส่งมอบและเชื่อมต่อเข้ากับแพลตฟอร์มบริการสนทนาเดิมของโรงพยาบาลมหาวิทยาลัยนเรศวรในสภาพแวดล้อม On-Premise อย่างปลอดภัยและรักษาความเป็นส่วนตัวของข้อมูลผู้ป่วย</p>
+<hr />
+<h2>Abstract (English)</h2>
+<p>This project presents the design, architectural formulation, and empirical evaluation of a specialized Backend Retrieval-Augmented Generation (RAG) engine engineered for chemotherapy symptom severity assessment and patient advisory. The backend service is purposefully designed to integrate via Application Programming Interfaces (APIs) with the pre-existing hospital conversational chatbot platform at Naresuan University Hospital. The clinical scope concentrates on three high-prevalence chemotherapy complications: oral mucositis, chemotherapy-induced constipation, and peripheral sensory neuropathy. By decoupling linguistic generation from medical parametric memory, the backend architecture integrates high-density multilingual embeddings and an embedded vector store to dynamically retrieve evidence from curated clinical knowledge bases, synthesizing standardized Common Terminology Criteria for Adverse Events (CTCAE v5.0) criteria with evidence-based supportive care protocols.</p>
+<p>During the development and validation phase, a lightweight Streamlit web interface was deployed strictly as an internal testing testbed and experimental evaluation prototype. Benchmark evaluations were executed across five language model candidate architectures using a standardized protocol of 30 clinical case queries per model to assess severity grading accuracy, medical context retrieval recall, and inference latency under local and high-performance Cloud GPU environments. The backend architecture enforces strict clinical guardrails, red-flag escalation logic, and a modular service layer, establishing a production-ready foundation for on-premise deployment and seamless interoperability with Naresuan University Hospital's existing digital health infrastructure.</p>
+<hr />
+<h1>Chapter 1: Introduction</h1>
+<h3>1.1 Background and Significance of the Project</h3>
+<p>Chemotherapy remains a cornerstone of systemic therapeutic regimens in modern clinical oncology. However, because cytotoxic agents non-selectively impair cellular proliferation throughout the human body, patients routinely suffer from severe adverse toxicities. Among the most prevalent and debilitating conditions reported during outpatient convalescence are oral mucositis (mucosal inflammation, severe pain, and deep ulceration), chemotherapy-induced constipation, and peripheral sensory neuropathy (stocking-and-glove sensory loss, tingling, and tactile impairment). If left unmonitored and improperly managed at home, these toxicities rapidly undermine patient nutrition, compromise physical autonomy, and induce severe psychological distress, frequently culminating in unplanned emergency department visits, chemotherapy dose reductions, or fatal treatment interruptions.</p>
+<p>Between outpatient clinical visits, cancer patients face a substantial "semantic and communicative barrier." While healthcare institutions—such as Naresuan University Hospital—provide comprehensive patient information sheets and reference standardized clinical guidelines like the Common Terminology Criteria for Adverse Events (CTCAE), patients and family caregivers often struggle to decipher complex medical classifications. Instead, patients communicate their symptoms in colloquial, subjective terms (e.g., describing severe mouth ulcers as an inability to swallow fluids, or advanced neuropathy as frequently dropping utensils while cooking). Conventional keyword-matching algorithms and generic internet search engines fail to comprehend the clinical significance of these informal complaints, frequently returning fragmented or misleading advice. Simultaneously, hospital telephone advice lines face significant staffing constraints outside regular operating hours, creating an acute demand for intelligent, around-the-clock clinical guidance.</p>
+<p>To enhance outpatient communication and clinical service accessibility, Naresuan University Hospital maintains an established hospital chatbot platform. However, traditional rule-based or standard conversational chatbots lack the clinical reasoning required to accurately interpret unstructured medical narratives, assess complication severity grades, and synthesize multi-faceted nursing advice. While Large Language Models (LLMs) offer advanced linguistic understanding, standalone generative models suffer from "hallucinations"—generating confident yet medically fabricated facts, incorrect dosages, or contraindicated remedies. In high-stakes oncology care, ungrounded generative AI introduces unacceptable liability and safety risks.</p>
+<p>To overcome these challenges, this project focuses on designing and developing a specialized <strong>Backend Medical Assessment RAG System</strong>. Operating on localized Small Language Models (SLMs), dense multilingual semantic embeddings, and an embedded vector store, the backend pipeline implements a segregated dual-stream retrieval strategy that concurrently retrieves standardized CTCAE clinical grading thresholds and supportive nursing care guidelines. To facilitate rigorous testing and parameter optimization, an agile Streamlit interface was implemented strictly as an internal experimental testbed. The ultimate objective is to provide a robust, API-driven backend intelligence engine that connects directly with Naresuan University Hospital’s existing chatbot infrastructure, empowering cancer patients with 24/7 evidence-based symptom triage while upholding data privacy and clinical safety.</p>
+<hr />
+<h3>1.2 Project Objectives</h3>
+<ol>
+<li><strong>To design and architect an intelligent Backend Medical Assessment RAG Engine</strong> capable of translating unstructured, colloquial patient symptom descriptions into standardized CTCAE severity grades (Grade 1–4) and safe, evidence-based home-care guidance.</li>
+<li><strong>To implement a multi-source dual-stream retrieval mechanism</strong> within the backend pipeline that systematically segregates clinical threshold criteria from supportive nursing care protocols, ensuring balanced context synthesis.</li>
+<li><strong>To evaluate and compare model performance, severity grading accuracy, and inference latency</strong> across five language model candidates using a standardized benchmark of 30 clinical case questions per model under local and Cloud GPU computing environments.</li>
+<li><strong>To formulate strict medical guardrails and safety protocols</strong> that eliminate hallucinations, restrict unprescribed pharmacological recommendations, and automatically triage Grade 3–4 high-risk symptoms for urgent clinical referral.</li>
+<li><strong>To deploy an internal Streamlit testbed prototype</strong> for experimental validation and latency instrumentation, establishing standard API interfaces for seamless integration into Naresuan University Hospital's existing chatbot platform.</li>
+</ol>
+<hr />
+<h3>1.3 Expected Benefits</h3>
+<h4>1.3.1 Patient Well-being and Navigational Relief</h4>
+<ul>
+<li><strong>24/7 Context-Aware Symptom Evaluation:</strong> Delivers immediate, empathetic, and evidence-grounded guidance for chemotherapy complications at any time, substantially easing patient anxiety between hospital appointments.</li>
+<li><strong>Objective Symptom Severity Tracking:</strong> Enables patients and caregivers to accurately gauge complication severity using standardized CTCAE clinical grades explained in clear layman terms.</li>
+<li><strong>Safer Home Recovery:</strong> Educates patients on safe oral hygiene, dietary adjustments, hydration schedules, and fall-prevention measures, reinforcing therapy compliance.</li>
+</ul>
+<h4>1.3.2 Healthcare System and Clinical Workflow Optimization</h4>
+<ul>
+<li><strong>Seamless Integration with Hospital Services:</strong> Enhances Naresuan University Hospital’s existing patient chatbot with specialized oncology intelligence without requiring patients to install new external applications.</li>
+<li><strong>Clinical Triage Support and Early Escalation:</strong> Automatically identifies Grade 3–4 life-threatening complications (e.g., severe obstipation, complete inability to swallow liquids, profound motor impairment) and urges immediate physician contact.</li>
+<li><strong>Mitigation of Routine Inquiries:</strong> Alleviates repetitive telephone advisory inquiries on outpatient oncology nursing staff, allowing specialized clinicians to prioritize acute in-hospital care.</li>
+</ul>
+<h4>1.3.3 Technological and Institutional Innovations</h4>
+<ul>
+<li><strong>Privacy-Preserving On-Premise AI Blueprint:</strong> Establishes a functional localized inference architecture operating within the hospital's internal infrastructure, ensuring strict compliance with health data privacy regulations (HIPAA/PDPA) without external cloud data leakage.</li>
+<li><strong>Modular Headless Backend Design:</strong> Provides an academic reference architecture demonstrating how an intelligent RAG backend can serve as an AI middleware layer for legacy institutional conversational systems.</li>
+</ul>
+<hr />
+<h3>1.4 Project Scope</h3>
+<h4>1.4.1 Clinical Symptom Domain and Taxonomy</h4>
+<p>The project restricts its clinical knowledge base and assessment scope to three critical chemotherapy-induced adverse effects:
+1. <strong>Oral Mucositis / Mouth Ulcers</strong> (<em>MedDRA Code: 10028130</em>): Covers mucosal redness, painful ulcerations, swallowing difficulty, and nutritional adjustments.
+2. <strong>Chemotherapy-Induced Constipation</strong> (<em>MedDRA Code: 10010774</em>): Covers defecation difficulties, stool impaction, abdominal distention, dietary fiber balance, and hydration management.
+3. <strong>Peripheral Sensory Neuropathy</strong> (<em>MedDRA Code: 10034620</em>): Covers tingling sensations, glove-and-stocking numbness, tactile loss, and fine motor impairment (e.g., buttoning clothes, handling utensils).
+* <strong>Severity Grading Standard:</strong> Grounded strictly in the National Cancer Institute's Common Terminology Criteria for Adverse Events (CTCAE v5.0), classifying conditions into Grade 1 (Mild), Grade 2 (Moderate), Grade 3 (Severe), and Grade 4 (Life-threatening).</p>
+<h4>1.4.2 System Architecture and Technical Stack</h4>
+<ul>
+<li><strong>Core Contribution:</strong> Design and implementation of the <strong>Backend RAG Processing Engine and Service Layer</strong>.</li>
+<li><strong>Language Models:</strong> Evaluated across five open-weight model architectures (spanning Small and Medium Language Model parameter scales) served via an optimized model runtime engine.</li>
+<li><strong>Embedding Model:</strong> Multilingual dense embedding model supporting dense semantic text representations in both Thai and English.</li>
+<li><strong>Vector Database:</strong> Lightweight embedded vector database featuring persistent on-disk storage.</li>
+<li><strong>Orchestration Framework:</strong> Comprehensive LLM orchestration framework managing document chunking, prompt templates, and conversational context pipelines.</li>
+<li><strong>Testing &amp; Prototyping Interface:</strong> A lightweight Streamlit web application developed strictly as an internal testing environment (Testbed UI) for benchmarking, parameter tuning, and latency monitoring.</li>
+<li><strong>Target Production Environment:</strong> API-level integration with the existing conversational chatbot system of Naresuan University Hospital on hospital internal on-premise infrastructure.</li>
+</ul>
+<h4>1.4.3 Evaluation Scope</h4>
+<ul>
+<li><strong>Benchmark Protocol:</strong> Evaluated across 5 language model architectures using a standardized set of 30 clinical case questions per model.</li>
+<li><strong>Evaluation Metrics:</strong> Severity Grading Accuracy (Correct vs. Incorrect), Context Chunk Retrieval Precision, Response Latency (seconds), and Qualitative Adherence to Medical Safety Guardrails.</li>
+</ul>
+<hr />
+<h3>1.5 Methodology</h3>
+<p>The research and development process was conducted across eight systematically sequenced phases:
+1. <strong>Clinical Requirement &amp; Knowledge Elicitation:</strong> Formulating clinical symptom taxonomies and collecting colloquial patient inquiries, slang, and common outpatient questions in coordination with oncology care guidelines.
+2. <strong>Medical Knowledge Base Construction:</strong> Compiling, verifying, and structuring evidence-based oncology nursing manuals and clinical grading criteria into standardized textual knowledge repositories.
+3. <strong>Document Ingestion and Vector Indexing:</strong> Performing recursive text chunking with semantic overlap and generating high-dimensional dense embeddings stored within the embedded vector database.
+4. <strong>Dual-Stream Retrieval Pipeline Engineering:</strong> Implementing custom retrieval filtering that simultaneously fetches clinical threshold criteria chunks and supportive care advice chunks.
+5. <strong>Prompt Engineering and Medical Guardrail Hardening:</strong> Designing structured system prompts enforcing clinical role boundaries, mandatory CTCAE grading, refusal of unauthorized prescriptions, and emergency escalation.
+6. <strong>Internal Testbed Prototype Development:</strong> Building a Streamlit application used exclusively as an internal testbed to evaluate latency, test prompt variations, and configure retrieval depth parameters ($k$-values).
+7. <strong>Empirical Batch Evaluation:</strong> Executing systematic automated benchmarks across five language models using 30 clinical case questions per model to analyze accuracy, retrieval recall, and inference latency.
+8. <strong>API Architecture and Hospital Integration Planning:</strong> Designing standard RESTful API endpoints and data exchange contracts for integrating the validated backend engine into Naresuan University Hospital’s existing chatbot.</p>
+<hr />
+<h3>1.6 Operational Plan</h3>
+<p>The project lifecycle is structured across five distinct operational phases over a five-month timeline:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Phase</th>
+<th style="text-align: center;">Duration / Month</th>
+<th style="text-align: left;">Milestone &amp; Core Activities</th>
+<th style="text-align: left;">Infrastructure &amp; Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Phase 1</strong></td>
+<td style="text-align: center;">October (ตุลาคม)</td>
+<td style="text-align: left;"><strong>Local Model &amp; RAG Prototype:</strong> Test initial lightweight models on local hardware, construct the CTCAE knowledge repository, and build the Streamlit testing prototype.</td>
+<td style="text-align: left;">Local Workstation (4GB VRAM GPU / CPU) ($0)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 2</strong></td>
+<td style="text-align: center;">November (พฤศจิกายน)</td>
+<td style="text-align: left;"><strong>Cloud GPU Testing (Medium &amp; Large Models):</strong> Deploy high-performance Cloud GPU instances, benchmark 30 clinical questions per model across candidates, tune prompt structures and retrieval depths.</td>
+<td style="text-align: left;">Cloud GPU (NVIDIA RTX 4090 24GB VRAM) ($37.00 ~ 1,300 THB for 50 hrs)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 3</strong></td>
+<td style="text-align: center;">December (ธันวาคม)</td>
+<td style="text-align: left;"><strong>Hospital Server Deployment &amp; Integration:</strong> Freeze the optimal backend model, deploy to Naresuan University Hospital internal server (On-premise), connect API to hospital's existing chatbot, and conduct User Acceptance Testing (UAT) with clinical doctors.</td>
+<td style="text-align: left;">Hospital Server Infrastructure ($0)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 4</strong></td>
+<td style="text-align: center;">January (มกราคม)</td>
+<td style="text-align: left;"><strong>System Polishing &amp; Final Documentation:</strong> Refine response nuances based on clinician feedback, compile comprehensive API documentation, user guides, and system architecture reports.</td>
+<td style="text-align: left;">Local / Hospital Server ($0)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Phase 5</strong></td>
+<td style="text-align: center;">February (กุมภาพันธ์)</td>
+<td style="text-align: left;"><strong>Final Defense &amp; Live Demonstration:</strong> Re-commission Cloud GPU instance for thesis defense demonstration, live system walkthrough via the testing interface, and committee examination.</td>
+<td style="text-align: left;">Cloud GPU (NVIDIA RTX 4090 24GB VRAM) ($11.10 ~ 390 THB for 15 hrs)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>1.7 Budgetary Requirements</h3>
+<p>The system utilizes open-source framework components (model runtime engines, vector stores, and orchestration libraries) to eliminate proprietary software licensing costs. The operational budget is allocated for high-performance Cloud GPU infrastructure (NVIDIA RTX 4090) to support intensive model evaluation and live demonstration:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Expense Item</th>
+<th style="text-align: left;">Service Provider / Hardware Specification</th>
+<th style="text-align: center;">Time Quota / Units</th>
+<th style="text-align: center;">Cost (USD)</th>
+<th style="text-align: center;">Cost (THB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Local Development</strong> (Oct)</td>
+<td style="text-align: left;">Local Workstation (Entry-level Laptop GPU / CPU)</td>
+<td style="text-align: center;">Unlimited</td>
+<td style="text-align: center;">$0.00</td>
+<td style="text-align: center;">0 บาท</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cloud GPU Testing</strong> (Nov)</td>
+<td style="text-align: left;">Cloud GPU Instance (NVIDIA RTX 4090 24GB VRAM, 5 vCPUs, 31GB RAM)</td>
+<td style="text-align: center;">50 Hours ($0.74/hr)</td>
+<td style="text-align: center;">$37.00</td>
+<td style="text-align: center;">~1,300 บาท</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hospital Server</strong> (Dec–Jan)</td>
+<td style="text-align: left;">Naresuan University Hospital Server / Internal Network</td>
+<td style="text-align: center;">Project Duration</td>
+<td style="text-align: center;">$0.00</td>
+<td style="text-align: center;">0 บาท</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Cloud GPU Defense</strong> (Feb)</td>
+<td style="text-align: left;">Cloud GPU Instance (NVIDIA RTX 4090 24GB VRAM - Rehearsal &amp; Defense)</td>
+<td style="text-align: center;">15 Hours ($0.74/hr)</td>
+<td style="text-align: center;">$11.10</td>
+<td style="text-align: center;">~390 บาท</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Total Project Budget</strong></td>
+<td style="text-align: left;"><strong>Summary of all operational phases</strong></td>
+<td style="text-align: center;"><strong>65 Hours Cloud GPU</strong></td>
+<td style="text-align: center;"><strong>$48.10</strong></td>
+<td style="text-align: center;"><strong>~1,690 บาท</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>1.8 AI Disclosure Statements</h3>
+<p>We disclose that Google Gemini and AI-assisted development tools were utilized during the drafting of this report for grammatical refinement, formal English terminology selection, and stylistic consistency. The underlying RAG architecture, knowledge base formulation, evaluation methodologies, and experimental benchmarks were independently conceptualized, engineered, and executed by the author. All clinical statements have been verified against established oncology nursing literature and international CTCAE guidelines.</p>
+<h2>---</h2>
+<h1>Chapter 2: Theoretical Background and Principles</h1>
+<h3>2.1 Chemotherapy Adverse Effects and CTCAE Grading Standard</h3>
+<p>Chemotherapy administration aims to eradicate malignant cells by interfering with cell division, DNA replication, or metabolic pathways. However, because cytotoxic compounds circulate systemically, healthy tissues with high physiological renewal rates—notably the oral mucosa, gastrointestinal tract, and peripheral nervous system—sustain collateral damage.</p>
+<h4>2.1.1 Clinical Complications in Outpatient Oncology</h4>
+<ol>
+<li><strong>Oral Mucositis (แผลในช่องปากและเยื่อบุอักเสบ):</strong> Cytotoxic agents induce cellular death in the basal epithelium, leading to painful mucosal inflammation, erythema, and deep ulceration. Patients experience severe oral burning sensations, intolerance to normal solid diet, dysphagia (swallowing impairment), and heightened risk of secondary systemic bacteremia.</li>
+<li><strong>Chemotherapy-Induced Constipation (ท้องผูก):</strong> Commonly administered chemotherapeutic regimens, coupled with routine supportive antiemetic medications (e.g., 5-HT3 receptor antagonists) and opioid analgesics, severely suppress enteric neuromuscular motility. Prolonged constipation can rapidly progress to severe fecal impaction, stercoral ulceration, and life-threatening bowel perforation.</li>
+<li><strong>Chemotherapy-Induced Peripheral Neuropathy - CIPN (ปลายประสาทอักเสบ/ชา):</strong> Neurotoxic agents (such as Taxanes and Platinum coordination complexes) cause mitochondrial injury and axonal degeneration in peripheral sensory nerves. Symptoms characteristically manifest bilaterally in the hands and feet ("stocking-glove distribution"), presenting as numbness, burning sensations, loss of fine touch, and impaired fine motor coordination (such as difficulty buttoning clothes or handwriting).</li>
+</ol>
+<h4>2.1.2 Common Terminology Criteria for Adverse Events (CTCAE v5.0)</h4>
+<p>The National Cancer Institute (NCI) CTCAE v5.0 provides a globally standardized descriptive terminology and severity rating scale for cancer adverse events:
+* <strong>Grade 1 (Mild):</strong> Asymptomatic or mild symptoms; clinical or diagnostic observations only; therapeutic intervention not indicated.
+* <strong>Grade 2 (Moderate):</strong> Minimal, local, or non-invasive intervention indicated; limiting age-appropriate instrumental Activities of Daily Living (ADL) such as meal preparation, grocery shopping, or medication management.
+* <strong>Grade 3 (Severe):</strong> Severe or medically significant but not immediately life-threatening; hospitalization or prolongation of existing hospitalization indicated; disabling; limiting self-care ADL (bathing, dressing, undressing, feeding, using the toilet).
+* <strong>Grade 4 (Life-threatening):</strong> Urgent intervention indicated; consequences are immediately life-threatening.
+* <strong>Grade 5:</strong> Death related to the adverse event.</p>
+<hr />
+<h3>2.2 Small Language Models (SLMs) and Localized Inference</h3>
+<h4>2.2.1 Evolution from Transformer Architecture</h4>
+<p>Modern generative language models are founded upon the autoregressive decoder-only Transformer architecture, employing multi-head self-attention mechanisms to dynamically capture semantic dependencies across distant tokens:
+$$  ext{Attention}(Q, K, V) =   ext{softmax}\left(rac{QK^T}{\sqrt{d_k}}
+ight)V$$
+While large commercial foundation models demonstrate impressive conversational fluency, their application in hospital clinical workflows is constrained by significant vulnerabilities:
+1. <strong>Hallucination and Medical Safety:</strong> Parametric memory models are susceptible to generating non-factual statements, incorrect dosages, or fabricated contraindications with high superficial confidence.
+2. <strong>Patient Data Privacy &amp; Regulatory Compliance:</strong> Transmitting unencrypted, sensitive medical queries to third-party commercial cloud APIs presents severe compliance risks under HIPAA and national personal data protection regulations (such as Thailand's PDPA).</p>
+<h4>2.2.2 Small Language Models (SLMs) and Localized Serving</h4>
+<p>Small Language Models (ranging from 1.5B to 14B parameters) provide an optimal balance between cognitive reasoning and computational economy:
+* <strong>Multilingual Linguistic Proficiency:</strong> Modern SLM architectures incorporate enlarged token vocabularies and multilingual pre-training corpora, achieving outstanding comprehension and token efficiency in non-Latin scripts, particularly formal and colloquial Thai.
+* <strong>Local Runtime Serving:</strong> Local serving frameworks enable optimized 4-bit and 8-bit quantized model inference on commodity GPUs or dedicated hospital intranet servers, completely eliminating external network dependencies and ensuring total data privacy.</p>
+<hr />
+<h3>2.3 Retrieval-Augmented Generation (RAG) Architecture</h3>
+<h4>2.3.1 Principle of RAG</h4>
+<p>The RAG architecture overcomes the limitations of static parametric memory by decoupling knowledge storage from language generation. Instead of relying solely on parameters learned during pre-training, an external retrieval mechanism queries an indexed knowledge base to gather verified document snippets relevant to the user query. The language model then generates its response conditioned upon both the query and the retrieved context:</p>
+<p>$$  ext{Output} \sim P( ext{Response} \mid  ext{Query},     ext{Context}_{  ext{retrieved}})$$</p>
+<h4>2.3.2 Document Ingestion and Recursive Text Splitting</h4>
+<p>Clinical guidelines possess structured hierarchies (clinical categories, threshold grades, contraindications). Arbitrary character splitting risks bifurcating vital medical conditions. The system utilizes recursive character chunking with parameterized boundaries:
+* <strong>Chunk Size:</strong> Configured to accommodate complete clinical grade definitions and self-care recommendations within a single chunk.
+* <strong>Chunk Overlap:</strong> Preserves semantic continuity between consecutive chunks, preventing critical medical context from being severed at chunk boundaries.</p>
+<h4>2.3.3 Dual-Stream Segregated Retrieval Strategy</h4>
+<p>Standard single-stream RAG retrieval frequently encounters "context imbalance": general self-care advice passages can dominate the top-$k$ nearest neighbors, displacing exact CTCAE grading threshold definitions. To resolve this challenge, the system employs a <strong>Dual-Stream Segregated Retrieval Strategy</strong>:
+* <strong>Stream 1 (Clinical Severity Criteria - $k_{ ext{grading}}$):</strong> Filters chunks dedicated exclusively to standardized CTCAE severity grading rules.
+* <strong>Stream 2 (Supportive Care Advice - $k_{ ext{advice}}$):</strong> Fetches chunks from evidence-based palliative nursing and supportive care manuals.
+* Both retrieved context streams are systematically concatenated into a structured prompt, guaranteeing that the language model receives both diagnostic classification criteria and actionable home-care advice.</p>
+<hr />
+<h3>2.4 Vector Embeddings and Vector Databases</h3>
+<h4>2.4.1 Dense Multilingual Semantic Representations</h4>
+<p>Colloquial patient expressions (e.g., <em>"แสบปากกินข้าวไม่ได้"</em> or <em>"มือชาหยิบช้อนหล่น"</em>) exhibit significant lexical variation from formal clinical terms (<em>Oral Mucositis Grade 2</em> or <em>Peripheral Neuropathy Grade 2</em>). Lexical matching (such as BM25) fails to bridge this gap. Dense embedding models project textual units into high-dimensional latent vectors ($\mathbb{R}^d$):
+* <strong>Multilingual Dense Embeddings:</strong> Trained specifically on cross-lingual, multi-granularity corpora, dense embeddings place colloquial symptom descriptions in close geometric proximity to their corresponding clinical definitions.</p>
+<h4>2.4.2 Vector Database Management and Similarity Metric</h4>
+<p>An embedded vector database organizes high-dimensional vectors using Hierarchical Navigable Small World (HNSW) graph indices, enabling sub-millisecond approximate nearest neighbor (ANN) retrieval based on Cosine Similarity:
+$$  ext{Cosine Similarity}(u, v) = rac{u \cdot v}{|u|_2 |v|_2}$$</p>
+<hr />
+<h3>2.5 Prompt Engineering and Medical Safety Guardrails</h3>
+<h4>2.5.1 Role-Based Grounding</h4>
+<p>System prompts establish an explicit clinical persona: <em>"Expert Oncology Medical AI Assistant"</em>. The prompt enforces rigid grounding directives:
+* All factual statements must be derived exclusively from the provided context.
+* If an inquiry falls outside the retrieved clinical context, the system is strictly instructed to respond: <em>"ขออภัย ข้อมูลในคู่มือไม่มีระบุเรื่องนี้ กรุณาปรึกษาแพทย์ประจำตัว"</em></p>
+<h4>2.5.2 Medical Escalation Protocol (Red-Flags)</h4>
+<p>To guarantee patient safety:
+* <strong>Urgent Clinical Referral:</strong> Whenever user inputs describe Grade 3 or Grade 4 symptoms (e.g., inability to drink liquids for $&gt;24$ hours, severe abdominal distention without bowel sounds or flatus, severe muscle weakness/falling), the model must output a prominent emergency notification urging immediate hospital care.
+* <strong>Prescription Restrictions:</strong> The model is strictly prohibited from prescribing prescription-only medications or advising changes to ongoing chemotherapy treatment regimens.</p>
+<hr />
+<h3>2.6 Service-Oriented Backend Architecture and Hospital Integration Strategy</h3>
+<h4>2.6.1 Decoupled Headless Backend and API Integration with Hospital Chatbot</h4>
+<p>In enterprise healthcare environments, deploying an independent, standalone patient app introduces friction for patients already accustomed to established hospital digital channels. To resolve this, the architecture is engineered as a <strong>Decoupled Headless Backend Service</strong>:
+* <strong>Core Backend Intelligence:</strong> The system encapsulates data ingestion, vector indexing, dual-stream retrieval, and LLM inference within an independent microservice.
+* <strong>Interoperability with Naresuan University Hospital Chatbot:</strong> The backend exposes standardized RESTful API endpoints (such as <code>/api/v1/chemo-assess</code>). When a patient sends a symptom query through the hospital's existing conversational platform, the hospital gateway forwards the query payload to this RAG backend. The backend processes the inquiry, resolves the CTCAE grade, generates validated advice with safety guardrails, and returns a structured JSON payload to be rendered inside the hospital chatbot interface.
+* <strong>On-Premise Network Containment:</strong> By deploying the backend server inside the hospital’s internal network, all patient communications and medical inferences remain completely within the firewall of Naresuan University Hospital, ensuring strict institutional compliance with patient data privacy standards.</p>
+<h4>2.6.2 Streamlit as an Experimental Testbed and Administrative Prototype</h4>
+<p>During the engineering and evaluation lifecycle, a rapid web interface is required for clinical benchmarking, latency measurement, and researcher oversight. Streamlit is utilized strictly as an <strong>Internal Experimental Testbed</strong>:
+* <strong>Developer and Clinician Sandbox:</strong> Provides an interactive testing ground where oncology specialists and AI researchers can simulate patient interactions, inspect raw retrieved context chunks, and verify guardrail behaviors without impacting live hospital systems.
+* <strong>Dynamic Parameter Optimization:</strong> Facilitates live calibration of retrieval depth sliders ($k_{ ext{grading}}$ and $k_{ ext{advice}}$) and temperature settings, enabling the identification of the optimal hyperparameter configuration prior to production API deployment.
+* <strong>Performance Instrumentation:</strong> Displays real-time response latency metrics (seconds) and memory utilization, serving as an operational benchmark for local versus Cloud GPU inference performance.</p>
+<h4>2.6.3 Caching and State Management in Experimental Validation</h4>
+<ul>
+<li><strong>Singleton Resource Caching:</strong> Heavy runtime components (the dense embedding model and vector database) are instantiated once as singleton resources during testbed initialization, avoiding repetitive disk I/O and memory re-allocation.</li>
+<li><strong>Session State Management:</strong> Maintains conversational context across multi-turn exchanges during clinician testing sessions, allowing comprehensive evaluation of context retention and safety consistency.</li>
+</ul>
+<hr />
+<h1>References</h1>
+<ol>
+<li>National Cancer Institute. (2017). <em>Common Terminology Criteria for Adverse Events (CTCAE) Version 5.0</em>. U.S. Department of Health and Human Services, National Institutes of Health.</li>
+<li>Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>Advances in Neural Information Processing Systems (NeurIPS 2020)</em>, 33, 9459-9474.</li>
+<li>Touvron, H., et al. (2023). Llama 2: Open Foundation and Fine-Tuned Chat Models. <em>arXiv preprint arXiv:2307.09288</em>.</li>
+<li>Qwen Team. (2024). <em>Qwen2.5: A Party of Foundation and Instruction-Tuned Models</em>. Technical Report.</li>
+<li>Chen, J., et al. (2024). BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation. <em>arXiv preprint arXiv:2402.03216</em>.</li>
+<li>LangChain Developers. (2024). <em>LangChain: Building Applications with LLMs through Composability</em>. https://python.langchain.com</li>
+<li>Chroma Team. (2024). <em>Chroma: The AI-Native Open-Source Embedding Database</em>. https://docs.trychroma.com</li>
+<li>RunPod Inc. (2024). <em>RunPod: Globally Distributed Cloud GPU Infrastructure for AI/ML Workloads</em>. https://www.runpod.io</li>
+<li>American Cancer Society. (2023). <em>Chemotherapy Side Effects and Management: A Guide for Patients and Families</em>. Atlanta, GA.</li>
+<li>Asian Pacific Journal of Cancer Prevention. (2021). Constipation in Chemotherapy Patients: A Diagnostic Accuracy Study. <em>APJCP / PMC8850898</em>, 22(8), 2541-2548.</li>
+</ol>
+</body>
+</html>

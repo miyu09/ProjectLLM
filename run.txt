@@ -1,4 +1,4 @@
-streamlit run ui_bot.py
+streamlit run code/ui_bot.py
 
 llama3.1
 llama3.2:3b

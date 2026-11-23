@@ -59,9 +59,10 @@ st.markdown("""
 @st.cache_resource
 def load_rag_components():
     """โหลด Vector DB และ LLM พร้อมแคชไว้ในหน่วยความจำเพื่อความรวดเร็ว"""
-    data_files = [f for f in glob.glob("data/*.*") if f.endswith(('.txt', '.md')) and not f.endswith("run.txt")]
+    data_dir = "data" if os.path.exists("data") else ("../data" if os.path.exists("../data") else "data")
+    data_files = [f for f in glob.glob(os.path.join(data_dir, "*.*")) if f.endswith(('.txt', '.md')) and not f.endswith("run.txt")]
     if not data_files:
-        return None, None, "ไม่พบไฟล์ข้อมูล (.txt / .md) ในโฟลเดอร์ data"
+        return None, None, f"ไม่พบไฟล์ข้อมูล (.txt / .md) ในโฟลเดอร์ {data_dir}"
 
     documents = []
     loaded_files = []
@@ -76,7 +77,7 @@ def load_rag_components():
     if not documents:
         return None, None, "ไม่สามารถอ่านไฟล์ในโฟลเดอร์ data ได้"
 
-    CHROMA_PATH = "./chroma_db"
+    CHROMA_PATH = "./chroma_db" if os.path.exists("./chroma_db") else ("../chroma_db" if os.path.exists("../chroma_db") else "./chroma_db")
     embeddings = OllamaEmbeddings(model=EMBED_MODEL)
 
     if os.path.exists(CHROMA_PATH) and os.listdir(CHROMA_PATH):

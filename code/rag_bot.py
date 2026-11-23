@@ -31,11 +31,11 @@ def main():
     print("1. กำลังค้นหาและอ่านข้อมูลจากไฟล์เอกสาร (.txt / .md) ทั้งหมด...")
     documents = []
     
-    # ค้นหาไฟล์ .txt และ .md ทั้งหมดในโฟลเดอร์ data (ยกเว้น run.txt ถ้าบังเอิญมี)
-    data_files = [f for f in glob.glob("data/*.*") if f.endswith(('.txt', '.md')) and not f.endswith("run.txt")]
+    data_dir = "data" if os.path.exists("data") else ("../data" if os.path.exists("../data") else "data")
+    data_files = [f for f in glob.glob(os.path.join(data_dir, "*.*")) if f.endswith(('.txt', '.md')) and not f.endswith("run.txt")]
     
     if not data_files:
-        print("ไม่พบไฟล์ข้อมูล (.txt / .md) ในโฟลเดอร์ data เลยครับ")
+        print(f"ไม่พบไฟล์ข้อมูล (.txt / .md) ในโฟลเดอร์ {data_dir} เลยครับ")
         return
 
     for file_path in data_files:

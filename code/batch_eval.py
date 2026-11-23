@@ -19,9 +19,9 @@ from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTempla
 # ==========================================
 # ค่าเริ่มต้นระบบ (Default Config)
 # ==========================================
-DEFAULT_MODEL = "qwen2.5:1.5b"
+DEFAULT_MODEL = "qwen2.5:7b"
 DEFAULT_EMBED = "bge-m3"
-DEFAULT_INPUT_CSV = "Test.csv"
+DEFAULT_INPUT_CSV = "ผลการทดลอง/Test.csv" if os.path.exists("ผลการทดลอง/Test.csv") else ("../ผลการทดลอง/Test.csv" if os.path.exists("../ผลการทดลอง/Test.csv") else "Test.csv")
 DEFAULT_K_GRADING = 2
 DEFAULT_K_ADVICE = 3
 CHROMA_PATH = "./chroma_db"
@@ -177,6 +177,15 @@ def run_batch_eval(model_name, embed_model, input_csv, output_csv, k_grading, k_
     )
     
     prompt_template = build_prompt_template()
+
+    # 🔥 Warm-up: โหลดทั้ง Embedding และ LLM เข้า VRAM ก่อนเริ่มจับเวลาจริง
+    print("🔥 กำลัง Warm-up โมเดล (โหลดเข้าหน่วยความจำ) ก่อนเริ่มจับเวลา...")
+    try:
+        vector_store.similarity_search("ทดสอบ", k=1)
+        llm.invoke("สวัสดี")
+        print("✅ Warm-up เสร็จสิ้น พร้อมเก็บข้อมูล!\n")
+    except Exception as e:
+        print(f"⚠️ Warm-up มีข้อผิดพลาด (ดำเนินการต่อ): {e}\n")
 
     # 3. เตรียมไฟล์ CSV และเขียน Header
     fieldnames = [
